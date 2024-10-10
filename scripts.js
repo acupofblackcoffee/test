@@ -88,3 +88,26 @@ $('#scrollTopBtn').click(function() {
   $('html, body').animate({scrollTop : 0}, 800);
   return false;
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const menuToggle = document.getElementById('menuToggle');
+  const header = document.getElementById('header');
+  
+  menuToggle.addEventListener('click', function() {
+    header.classList.toggle('open');
+  });
+
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+  window.addEventListener('scroll', function() {
+    if (window.pageYOffset > 300) {
+      scrollTopBtn.style.display = 'block';
+    } else {
+      scrollTopBtn.style.display = 'none';
+    }
+  });
+
+  scrollTopBtn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+});
