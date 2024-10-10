@@ -230,6 +230,10 @@ footer {
         display: none;
     }
 
+    .desktop-nav, .desktop-lang {
+    display: none;
+    }
+
     .menu-toggle {
         display: block;
         background: none;
