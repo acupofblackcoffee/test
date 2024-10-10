@@ -30,6 +30,13 @@ body {
     box-sizing: border-box;
 }
 
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
 .top-title {
     font-size: 1.5em;
     font-weight: bold;
@@ -180,9 +187,37 @@ footer {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+.site-title {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.desktop-nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.desktop-nav li {
+  margin-left: 20px;
+}
+
+.desktop-nav a, .language-selector a {
+  color: var(--light-cream);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.desktop-nav a:hover, .language-selector a:hover {
+  color: var(--mocha);
+}
+
+
 .menu-toggle, .mobile-nav {
     display: none;
 }
+
 
 @media (max-width: 768px) {
     .header {
