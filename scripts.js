@@ -111,3 +111,31 @@ document.addEventListener('DOMContentLoaded', function() {
     window.scrollTo({top: 0, behavior: 'smooth'});
   });
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  
+  menuToggle.addEventListener('click', function() {
+    this.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+  });
+
+  // メニュー外をクリックしたときにメニューを閉じる
+  document.addEventListener('click', function(event) {
+    if (!mobileNav.contains(event.target) && !menuToggle.contains(event.target)) {
+      menuToggle.classList.remove('open');
+      mobileNav.classList.remove('open');
+    }
+  });
+
+  // モバイルナビゲーションのリンクをクリックしたときにメニューを閉じる
+  const mobileNavLinks = mobileNav.getElementsByTagName('a');
+  for (let link of mobileNavLinks) {
+    link.addEventListener('click', function() {
+      menuToggle.classList.remove('open');
+      mobileNav.classList.remove('open');
+    });
+  }
+});
