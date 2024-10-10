@@ -74,3 +74,17 @@ $(window).on('load resize', function() {
 $(window).scroll(function() {
     getCurrentPosition();
 });
+
+// スクロールトップボタンの表示制御とスムーズスクロール
+$(window).scroll(function() {
+  if ($(this).scrollTop() > 300) {
+    $('#scrollTopBtn').fadeIn();
+  } else {
+    $('#scrollTopBtn').fadeOut();
+  }
+});
+
+$('#scrollTopBtn').click(function() {
+  $('html, body').animate({scrollTop : 0}, 800);
+  return false;
+});
