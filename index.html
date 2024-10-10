@@ -8,26 +8,42 @@
     <link rel="stylesheet" type="text/css" href="./styles.css">
 </head>
 <body>
-    <header class="header">
-        <div class="top-title">Kohei's Portfolio</div>
-        <nav class="g-nav">
-            <ul>
-                <li><a href="#area-1">経歴・スキル</a></li>
-                <li><a href="#area-2">プロダクト</a></li>
-                <li><a href="#">ブログ(準備中)</a></li>
-                <li><a href="#">CV</a></li>
-            </ul>
-        </nav>
-        <nav class="lang-nav">
-            <ul>
-                <li><a href="#">日本語</a></li>
-                <li> / </li>
-                <li><a href="#">简体中文</a></li>
-                <li> / </li>
-                <li><a href="#">English</a></li>
-            </ul>
-        </nav>
-    </header>
+   <header id="header" class="header">
+  <div class="header-content">
+    <h1 class="site-title">Kohei's Portfolio</h1>
+    <nav class="desktop-nav">
+      <ul>
+        <li><a href="#area-1">経歴・スキル</a></li>
+        <li><a href="#area-2">プロダクト</a></li>
+        <li><a href="#">ブログ(準備中)</a></li>
+        <li><a href="#">CV</a></li>
+      </ul>
+    </nav>
+    <div class="language-selector desktop-lang">
+      <a href="#" data-lang="ja">日本語</a> /
+      <a href="#" data-lang="zh">简体中文</a> /
+      <a href="#" data-lang="en">English</a>
+    </div>
+    <button id="menuToggle" class="menu-toggle" aria-label="メニューを開く">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav">
+    <ul>
+      <li><a href="#area-1">経歴・スキル</a></li>
+      <li><a href="#area-2">プロダクト</a></li>
+      <li><a href="#">ブログ(準備中)</a></li>
+      <li><a href="#">CV</a></li>
+    </ul>
+    <div class="language-selector mobile-lang">
+      <a href="#" data-lang="ja">日本語</a> /
+      <a href="#" data-lang="zh">简体中文</a> /
+      <a href="#" data-lang="en">English</a>
+    </div>
+  </nav>
+</header>
     
     <main class="grid-container">
         <section id="area-1" class="scroll-point card">
@@ -81,12 +97,10 @@
         </section>
     </main>
 
-    <footer>
-      <div class="footer-content">
-        <p>&copy; 2024 Kohei's Portfolio. All rights reserved.</p>
-        <p>Contact: <a href="mailto:haoping0305@outlook.jp">haoping0305@outlook.jp</a></p>
-      </div>
-    </footer>
+   <footer class="footer">
+  <p>&copy; 2024 Kohei's Portfolio. All rights reserved.</p>
+  <p>Contact: <a href="mailto:haoping0305@outlook.jp">haoping0305@outlook.jp</a></p>
+</footer>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
