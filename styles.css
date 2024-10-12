@@ -262,6 +262,11 @@ footer {
     cursor: pointer;
 }
 
+
+[data-i18n] {
+  white-space: pre-line;
+}
+
 .mobile-nav .nav-item:hover,
 .mobile-nav .nav-item:active {
     color: var(--accent-color);
