@@ -138,3 +138,10 @@ function changeLanguage(lang) {
     // HTMLのlang属性を更新
     $('html').attr('lang', lang);
 }
+
+
+// 初期言語のアクティブ状態を設定
+$(document).ready(function() {
+    const savedLang = localStorage.getItem('language') || 'ja';
+    $(`.lang-btn[data-lang="${savedLang}"]`).addClass('active');
+});
