@@ -99,6 +99,11 @@ p {
     overflow-wrap: normal;
 }
 
+.skill-list {
+    overflow-wrap: break-word;
+    word-break: break-all;
+}
+
 .content-wrapper {
     display: grid;
     grid-template-columns: 2fr 1fr;
