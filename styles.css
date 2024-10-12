@@ -34,60 +34,54 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-grow: 1;
+    flex-wrap: nowrap;
+    width: 100%;
+    padding: 0 15px;
 }
 
 .site-title {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin: 0;
+    flex: 0 0 auto;
+    margin-right: 20px;
+    font-size: 1.2em;
+    white-space: nowrap;  /* 追加: タイトルを折り返さない */
+    overflow: hidden;     /* 追加: はみ出た部分を隠す */
+    text-overflow: ellipsis;  /* 追加: はみ出た部分を省略記号で表示 */
+    max-width: 30%;       /* 追加: 最大幅を設定（必要に応じて調整） */
 }
 
 .desktop-nav {
-    padding: 0 10vh;
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
 }
 
 .desktop-nav ul {
-    list-style: none;
     display: flex;
-    gap: 20px;
-    padding: 0;
-    margin: 0;
-    flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-}
-
-.language-selector {
-    list-style: none;
-    display: flex;
-    gap: 10px;
     padding: 0;
     margin: 0;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
+    list-style-type: none;
 }
 
 .desktop-nav li {
-    margin-left: 20px;
+    flex: 0 1 auto;
+    min-width: 80px;
+    text-align: center;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 10px;
 }
 
-.desktop-nav a, .language-selector a {
-    color: var(--bg-color);
-    text-decoration: none;
-    transition: color 0.3s;
+.desktop-nav a {
+    font-size: 0.9em;
 }
 
-.desktop-nav a:hover, .language-selector a:hover {
-    color: var(--accent-color);
-}
-
-.desktop-lang {
+.language-selector {
+    flex: 0 0 auto;
     display: flex;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -96,23 +90,43 @@ body {
     border: none;
     color: var(--bg-color);
     cursor: pointer;
-    font-size: 0.9em;
-    padding: 5px 10px;
-    margin: 0 5px;
+    font-size: 0.8em;
+    padding: 3px 6px;
+    margin: 0 2px;
     transition: background-color 0.3s, color 0.3s;
+    border-radius: 3px;
+    white-space: nowrap;
 }
 
 .desktop-lang .lang-btn:hover,
 .desktop-lang .lang-btn.active {
     background-color: var(--bg-color);
     color: var(--main-color);
-    border-radius: 4px;
 }
+
+.desktop-lang .lang-btn.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 
 @media (max-width: 1024px) {
     .desktop-lang {
         display: none;
     }
+	 .header-content {
+        flex-direction: column;
+	align-items: flex-start;  /* 変更: 左揃えに */
+    }
+    
+    .desktop-nav, .language-selector {
+        width: 100%;
+        justify-content: space-around;
+        margin-top: 10px;
+    }
+	.site-title {
+	margin-bottom: 10px;  /* 追加: タイトルの下に余白を追加 */
+	max-width: 100%;      /* 変更: モバイルでは最大幅を100%に */
 }
 
 .grid-container {
