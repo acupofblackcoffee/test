@@ -206,7 +206,7 @@ footer {
     display: none;
     position: fixed;
     right: 20px;
-    bottom: 20px;
+    bottom: 120px;
     z-index: 1001;
     background-color: var(--main-color);
     color: var(--bg-color);
@@ -231,7 +231,7 @@ footer {
     display: none;
     position: fixed;
     right: 20px;
-    bottom: 42vh;
+    bottom: 65vh;
     background-color: var(--main-color);
     padding: 20px;
     border-radius: 10px;
@@ -293,7 +293,7 @@ footer {
     }
 
     .content-wrapper {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .photo {
