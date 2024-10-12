@@ -16,15 +16,18 @@ $(document).ready(function() {
     });
 
     // ギャラリーモーダル
-    $(".gallery-list").modaal({
-        fullscreen: true,
-        before_open: function(){
-            $('html').css('overflow-y','hidden');
-        },
-        after_close: function(){
-            $('html').css('overflow-y','scroll');
-        }
-    });
+	   $(".gallery-list").modaal({
+	    type: 'image',
+	    fullscreen: true,
+	    before_open: function(){
+	        $('html').css('overflow-y','hidden');
+	    },
+	    after_close: function(){
+	        $('html').css('overflow-y','scroll');
+	    }
+	});
+
+	
 
     $(".gallery").modaal({
 	type: 'image',
