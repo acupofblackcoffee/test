@@ -231,7 +231,7 @@ footer {
     display: none;
     position: fixed;
     right: 20px;
-    bottom: 90px;
+    bottom: 42vh;
     background-color: var(--main-color);
     padding: 20px;
     border-radius: 10px;
