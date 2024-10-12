@@ -86,6 +86,35 @@ body {
     color: var(--accent-color);
 }
 
+.desktop-lang {
+    display: flex;
+    align-items: center;
+}
+
+.desktop-lang .lang-btn {
+    background: none;
+    border: none;
+    color: var(--bg-color);
+    cursor: pointer;
+    font-size: 0.9em;
+    padding: 5px 10px;
+    margin: 0 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.desktop-lang .lang-btn:hover,
+.desktop-lang .lang-btn.active {
+    background-color: var(--bg-color);
+    color: var(--main-color);
+    border-radius: 4px;
+}
+
+@media (max-width: 1024px) {
+    .desktop-lang {
+        display: none;
+    }
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
