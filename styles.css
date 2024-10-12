@@ -47,16 +47,22 @@ body {
     padding: 0 10vh;
 }
 
+
 .desktop-nav ul, .language-selector {
     list-style: none;
     display: flex;
     gap: 20px;
     padding: 0;
     margin: 0;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .desktop-nav li {
     margin-left: 20px;
+    white-space: nowrap;
 }
 
 .desktop-nav a, .language-selector a {
