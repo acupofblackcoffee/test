@@ -26,6 +26,17 @@ $(document).ready(function() {
         }
     });
 
+    $(".gallery").modaal({
+	type: 'image',
+	overlay_close:true,//モーダル背景クリック時に閉じるか
+	before_open:function(){// モーダルが開く前に行う動作
+		$('html').css('overflow-y','hidden');/*縦スクロールバーを出さない*/
+	},
+	after_close:function(){// モーダルが閉じた後に行う動作
+		$('html').css('overflow-y','scroll');/*縦スクロールバーを出す*/
+	}
+});
+
     // スクロール時のナビゲーション更新
     $(window).scroll(function() {
         $('.scroll-point').each(function() {
@@ -34,21 +45,12 @@ $(document).ready(function() {
             var windowHeight = $(window).height();
             if (scroll > position - windowHeight + 200) {
                 var id = $(this).attr('id');
-                $('.g-nav li').removeClass('current');
-                $('.g-nav li a[href="#' + id + '"]').parent().addClass('current');
+                $('.desktop-nav li').removeClass('current');
+                $('.desktop-nav li a[href="#' + id + '"]').parent().addClass('current');
+                $('.mobile-nav .nav-item').removeClass('current');
+                $('.mobile-nav .nav-item[href="#' + id + '"]').addClass('current');
             }
         });
-    });
-
-    // Raindrop effect in footer
-    $('#wrapper').raindrops({
-        color: '#C5956B',
-        canvasHeight: 150,
-        waveLength: 100,
-        waveHeight: 120,
-        rippleSpeed: 0.2,
-        density: 3,
-        frequency: 1
     });
 });
 
@@ -59,8 +61,10 @@ function getCurrentPosition() {
         var target = $(this).offset().top;
         var id = $(this).attr('id');
         if (scrollPosition >= target - 71) { // ヘッダーの高さ+1px
-            $('.g-nav li').removeClass('current');
-            $('.g-nav li a[href="#' + id + '"]').parent().addClass('current');
+            $('.desktop-nav li').removeClass('current');
+            $('.desktop-nav li a[href="#' + id + '"]').parent().addClass('current');
+            $('.mobile-nav .nav-item').removeClass('current');
+            $('.mobile-nav .nav-item[href="#' + id + '"]').addClass('current');
         }
     });
 }
@@ -75,67 +79,59 @@ $(window).scroll(function() {
     getCurrentPosition();
 });
 
-// スクロールトップボタンの表示制御とスムーズスクロール
-$(window).scroll(function() {
-  if ($(this).scrollTop() > 300) {
-    $('#scrollTopBtn').fadeIn();
-  } else {
-    $('#scrollTopBtn').fadeOut();
-  }
-});
+const modal = document.getElementById('languageModal');
+const modalToggle = document.getElementById('languageModalToggle');
 
-$('#scrollTopBtn').click(function() {
-  $('html, body').animate({scrollTop : 0}, 800);
-  return false;
-});
+modalToggle.onclick = function(e) {
+    e.preventDefault();
+    modal.style.display = "block";
+}
 
-document.addEventListener('DOMContentLoaded', function() {
-  const menuToggle = document.getElementById('menuToggle');
-  const header = document.getElementById('header');
-  
-  menuToggle.addEventListener('click', function() {
-    header.classList.toggle('open');
-  });
-
-  const scrollTopBtn = document.getElementById('scrollTopBtn');
-
-  window.addEventListener('scroll', function() {
-    if (window.pageYOffset > 300) {
-      scrollTopBtn.style.display = 'block';
-    } else {
-      scrollTopBtn.style.display = 'none';
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
     }
-  });
+}
 
-  scrollTopBtn.addEventListener('click', function() {
-    window.scrollTo({top: 0, behavior: 'smooth'});
-  });
+document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.onclick = function() {
+        const lang = this.getAttribute('data-lang');
+        console.log('Language changed to:', lang);
+        // ここで実際の言語切り替え処理を行う
+        modal.style.display = "none";
+    }
 });
 
+$(document).ready(function() {
+    // 既存の関数はそのまま保持
 
-document.addEventListener('DOMContentLoaded', function() {
-  const menuToggle = document.getElementById('menuToggle');
-  const mobileNav = document.getElementById('mobileNav');
-  
-  menuToggle.addEventListener('click', function() {
-    this.classList.toggle('open');
-    mobileNav.classList.toggle('open');
-  });
-
-  // メニュー外をクリックしたときにメニューを閉じる
-  document.addEventListener('click', function(event) {
-    if (!mobileNav.contains(event.target) && !menuToggle.contains(event.target)) {
-      menuToggle.classList.remove('open');
-      mobileNav.classList.remove('open');
-    }
-  });
-
-  // モバイルナビゲーションのリンクをクリックしたときにメニューを閉じる
-  const mobileNavLinks = mobileNav.getElementsByTagName('a');
-  for (let link of mobileNavLinks) {
-    link.addEventListener('click', function() {
-      menuToggle.classList.remove('open');
-      mobileNav.classList.remove('open');
+    // 言語切り替え機能
+    $('.lang-btn').click(function() {
+        const lang = $(this).data('lang');
+        changeLanguage(lang);
     });
-  }
+
+    // 初期言語の設定
+    const savedLang = localStorage.getItem('language') || 'ja';
+    changeLanguage(savedLang);
 });
+
+function changeLanguage(lang) {
+    $('[data-i18n]').each(function() {
+        const key = $(this).data('i18n');
+        $(this).text(translations[lang][key]);
+    });
+
+    // タイトルの変更
+    document.title = translations[lang]['pageTitle'];
+
+    // 言語ボタンのアクティブ状態を更新
+    $('.lang-btn').removeClass('active');
+    $(`.lang-btn[data-lang="${lang}"]`).addClass('active');
+
+    // 言語設定を保存
+    localStorage.setItem('language', lang);
+
+    // HTMLのlang属性を更新
+    $('html').attr('lang', lang);
+}
