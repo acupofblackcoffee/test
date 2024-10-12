@@ -1,4 +1,4 @@
-const translations = {
+window.translations = {
     ja: {
         pageTitle: "清水浩平",
         siteTitle: "清水浩平",
@@ -36,7 +36,7 @@ const translations = {
         workExperienceTitle: "工作经历",
         workExperienceContent: "2021~2023年 M公司 采购部→网络事业部",
         skillsTitle: "技能",
-        skillsContent: "中文商务级,英语日常会话级<br>普通驾驶执照(AT限定)<br>Adobe CC(Illustrator,Photoshop,Lightroom,InDesign,Premier Pro),Canva<br>HTML,CSS,Javascript<br>Python,R,Stata,SQL,Google App Script",
+        skillsContent: "中文商务级,英语日常会话级<br>日本普通驾驶执照(AT限定)<br>Adobe CC(Illustrator,Photoshop,Lightroom,InDesign,Premier Pro),Canva<br>HTML,CSS,Javascript<br>Python,R,Stata,SQL,Google App Script",
         whyNankaiTitle: "为什么选择南开大学？",
         whyNankaiContent: "我选择南开大学留学的原因是深厚的个人联系和这所大学提供的独特机会的结合。首先，我被南开大学与周恩来总理的联系深深吸引。南开大学是中国双一流大学之一，今年迎来了建校105周年的历史悠久的教育机构。周恩来总理是南开大学最著名的毕业生之一，我感觉到与他之间有一种奇妙的缘分。我们的生日正好相差100年，而且他在日本留学时就读的大学恰好是我的母校明治大学，这让我感到非常惊讶。此外，在大学时期我还被称为"周恩来"这个绰号，这种深厚的缘分让我感到一种命运般的联系。另外，我在日本的指导教授曾经有南开大学的留学经历，这也推动了我的选择。",
         meijiUniversityTitle: "明治大学时期",
