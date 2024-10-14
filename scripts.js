@@ -94,3 +94,21 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
         modal.style.display = "none";
     }
 });
+
+$(document).ready(function() {
+    // ローディングアニメーションを制御する関数
+    function handleLoading() {
+        // ページの読み込みが完了したらローディングオーバーレイを非表示にする
+        $(window).on('load', function() {
+            setTimeout(function() {
+                $('#loading-overlay').fadeOut(500);
+            }, 2000); // コーヒーが満タンになるのを待つ
+        });
+    }
+
+    // ローディングアニメーション関数を呼び出す
+    handleLoading();
+
+    // ... 既存のコード ...
+});
+
